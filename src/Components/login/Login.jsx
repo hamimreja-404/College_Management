@@ -10,10 +10,8 @@ import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-// Helper for conditional classes
 const cn = (...classes) => classes.filter(Boolean).join(" ");
 
-// A simple SVG spinner component for the loading animation
 const Spinner = () => (
     <svg
         className="animate-spin h-5 w-5 text-white"
@@ -94,17 +92,16 @@ function AuthPage() {
       const response = await axios.post(url, payload);
       const { user } = response.data.data;
 
-      // Assuming your API returns a user object with an '_id' field
+      
       if (!user._id) {
           throw new Error("User ID not found in API response.");
       }
 
       toast.success(`🎉 Welcome back, ${user.name}! Redirecting...`, { id: toastId });
       
-      // --- MODIFIED SECTION ---
-      // Include the user's _id in the data to be encrypted.
+      
       const userData = {
-        id: user._id, // User's unique identifier
+        id: user._id, 
         username: user.username,
         name: user.name,
         role: user.role,
@@ -112,11 +109,11 @@ function AuthPage() {
         email: user.email || "N/A"
       };
 
-      // 1. Convert the user data object to a JSON string.
+      // Convert the user data object to a JSON string.
       const userJson = JSON.stringify(userData);
-      // 2. Encrypt the JSON string using Base64 encoding.
+      // Encrypt the JSON string
       const encodedData = btoa(userJson);
-      // 3. Make the encrypted string safe for use in a URL.
+      // Make the encrypted string for use in a URL.
       const encodedParam = encodeURIComponent(encodedData);
 
       let dashboardPath = '/dashboard';
@@ -141,10 +138,9 @@ function AuthPage() {
         error.response?.data?.message || "Login failed. Please check your credentials.";
       toast.error(errorMessage, { id: toastId });
       console.error("API Error:", error.response || error);
-      setLoading(false); // Stop loading on error
+      setLoading(false); 
     } 
-    // No finally block needed, as we only want to stop loading on failure.
-    // On success, the component will unmount upon navigation.
+    
   };
 
   const handleChange = (e) => {

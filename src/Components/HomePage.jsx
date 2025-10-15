@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, UserCog, GraduationCap, X, Menu } from 'lucide-react';
 
-// You can replace this with your actual logo if you have one
+
 const Logo = () => (
     <div className="flex items-center space-x-2">
         <svg className="w-8 h-8 text-teal-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">

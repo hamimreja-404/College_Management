@@ -2,32 +2,29 @@ import React, {useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { Building, Users, Target } from 'lucide-react';
 
-// --- Main About Us Component ---
+
 export default function AboutUs() {
-    // This effect hook handles loading the AOS library from a CDN
+    
     useEffect(() => {
-        // Create a <link> element for the AOS CSS
         const link = document.createElement('link');
         link.href = 'https://unpkg.com/aos@2.3.1/dist/aos.css';
         link.rel = 'stylesheet';
         document.head.appendChild(link);
 
-        // Create a <script> element for the AOS JavaScript
         const script = document.createElement('script');
         script.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
         script.async = true;
 
-        // Initialize AOS after the script has loaded
         script.onload = () => {
             window.AOS.init({
-                duration: 800, // Animation duration in milliseconds
-                once: true,    // Whether animation should happen only once - while scrolling down
+                duration: 800, 
+                once: false,    
             });
         };
 
         document.body.appendChild(script);
 
-        // Cleanup function to remove the script and link when the component unmounts
+       
         return () => {
             document.head.removeChild(link);
             document.body.removeChild(script);
@@ -36,7 +33,7 @@ export default function AboutUs() {
 
     return (
         <div className="bg-white min-h-screen font-sans text-gray-700">
-            {/* --- Header/Navigation --- */}
+            {/* --- Header --- */}
             <header className="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
                 <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
                     <Link to="/" className="text-2xl font-bold text-teal-600 tracking-tight">Globe Allied .</Link>
@@ -48,7 +45,7 @@ export default function AboutUs() {
             </header>
 
             <main>
-                {/* --- Hero Section with Background Image --- */}
+                {/* --- Hero Section --- */}
                 <section 
                     className="relative text-white py-24 md:py-40 bg-cover bg-center bg-no-repeat"
                     style={{ backgroundImage: `url('https://media.istockphoto.com/id/2198864187/photo/group-of-people-outdoor-and-portrait-as-medical-student-for-career-learning-or-education-in.webp?a=1&b=1&s=612x612&w=0&k=20&c=Ek19PWjAZy-b0tpmjkL1y5hYVnOIO47ihmCfWwUBJ7E=')` }}
@@ -65,7 +62,7 @@ export default function AboutUs() {
                     </div>
                 </section>
 
-                {/* --- Our Mission & Vision Section --- */}
+                {/* ---  Mission & Vision Section --- */}
                 <section className="py-20 sm:py-28">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center">
@@ -100,7 +97,7 @@ export default function AboutUs() {
                     </div>
                 </section>
 
-                {/* --- Meet Our Team Section --- */}
+                {/* --- Meet Our Team  --- */}
                 <section className="py-20 sm:py-28 bg-gray-50">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="text-center">
